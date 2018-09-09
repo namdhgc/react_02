@@ -5,7 +5,7 @@ var srcPath = path.join(__dirname, 'scripts');
 var buildPath = path.join(__dirname, 'dist');
 
  module.exports = {
-    entry: [path.join(srcPath, 'test.jsx')], // many entry points => build to many files 
+    entry: [path.join(srcPath, 'containers/test.jsx')], // many entry points => build to many files 
     output: {
         path: buildPath,
         filename: 'bundle.js', // compiled file here
