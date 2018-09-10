@@ -6,10 +6,21 @@ export default class RegisterForm extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      extraPhoneNumbers: 0,
+    };
   }
 
   handleShowLogin() {
     this.props.handleShowLogin(true);
+  }
+
+  addMorePhoneNumber() {
+    this.setState({ extraPhoneNumbers: this.state.extraPhoneNumbers + 1 })
+  }
+
+  removePhoneNumber() {
+    this.setState({ extraPhoneNumbers: this.state.extraPhoneNumbers - 1 })
   }
 
   render() {
@@ -28,7 +39,13 @@ export default class RegisterForm extends React.Component {
           <span>Mật khẩu <span style={{color: 'red'}}>(required)</span></span>
           <input name="password" />
         </div>
-        <InputPhoneNumber />
+        <div>
+          <InputPhoneNumber
+            extraPhoneNumbers={this.state.extraPhoneNumbers}
+            addMorePhoneNumber={() => this.addMorePhoneNumber()}
+            removePhoneNumber={() => this.removePhoneNumber()}
+          />
+        </div>
         <div>
           <button onClick={() => alert("Bạn chưa nhập thông tin vào các trường required")}>
             Submit
